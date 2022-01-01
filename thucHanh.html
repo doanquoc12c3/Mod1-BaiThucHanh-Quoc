@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button onclick="exercise1()">Bai 1</button> <span>Tham so a = 5, b = 10. Tim nghiem</span><br>
+<button onclick="exercise2()">Bai 2</button> <span>Mang arr = [1,2,3,5,6]. Tim so nguyen trong mang</span><br>
+<button onclick="exercise3()">Bai 3</button> <span>Dem nguyen am trong chuoi</span><br>
+<button onclick="exercise4()">Bai 4</button> <span>OOP</span>
+<script>
+
+    // bai1
+    function exercise1(){
+
+        let result = ptBac1(5,10);
+
+        function ptBac1(a,b){
+
+            if(a ==0 && b ==0){
+                alert('phương trình có vô số nghiệm')
+            }else if( a==0&& b!=0){
+                alert('hệ số phương trình không thoả mãn')
+            }else if(a!=0){
+                return -b/a;
+            }
+        }
+        alert(result)
+    }
+
+
+
+
+
+    // bai2
+
+    let arr = [1,2,3,5,6];
+    let isFound = false;
+    function exercise2(){
+        let element = parseInt(prompt('nhap vao gia tri so nguyen de kiem tra'))
+        let index = elementIndex(element,arr)
+
+        if(index === false){
+            alert('khong tim thay so can tim')
+        } else{
+            alert('vi tri so can tim trong mang la '+ index)
+        }
+
+
+        function elementIndex(element, arr){
+
+            for(let i = 0; i<arr.length;i++){
+                if(element === arr[i]){
+                    isFound = true ;
+                    return i;
+                }
+            }
+            if( isFound == false) return false;
+        }
+    }
+
+
+
+    // bai3
+    function exercise3(){
+        let string = prompt('nhap vao mot chuoi de kiem tra')
+        let arr = string.split('');
+        let count =0;
+        let vowelArr = ['a','o','e','u','i']
+        let res =countVowel();
+        alert("co "+res+" nguyen am trong chuoi")
+
+        function countVowel(){
+            for(let i =0; i<arr.length;i++){
+                for(let j =0; j<vowelArr.length;j++){
+                    if(vowelArr[j]==arr[i]){
+                        count++;
+                    }
+                }
+            }
+            if(count == 0){
+                return false;
+            }else{
+                return count;
+            }
+        }
+    }
+
+
+
+
+    // bai4
+    function exercise4(){
+
+        class Animal{
+            name;
+            weight;
+            constructor(name,weight){
+                this.name = name;
+                this.weight = weight;
+            }
+            setName(name){
+                this.name = name;
+            }
+            getName(){
+                return this.name;
+            }
+            setWeight(){
+                this.weight = weight;
+            }
+            getWeight(){
+                return this.weight;
+            }
+
+            toString(){
+                return 'Can nang cua doi tuong '+ this.name + 'la '+ this.weight
+            }
+        }
+
+
+        let objAnimal1 = new Animal();
+        objAnimal1.setName('Elephant');
+        objAnimal1.setWeight(45.6);
+        objAnimal1.toString()
+
+        let objAnimal2 = new Animal('Bear', 74);
+        objAnimal2.setName('Mouse');
+        objAnimal2.getName();
+        objAnimal2.getWeight();
+    }
+</script>
+</body>
+</html>
